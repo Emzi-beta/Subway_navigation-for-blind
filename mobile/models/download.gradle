@@ -1,0 +1,10 @@
+def modelFloatDownloadUrl = "https://tfhub.dev/tensorflow/lite-model/mobilenet_v1_1.0_224/1/metadata/1?lite-format=tflite"
+def modelFloatFile = "mobilenet_v1_1.0_224.tflite"
+
+task downloadModelFloat(type: Download) {
+    src "${modelFloatDownloadUrl}"
+    dest project.ext.ASSET_DIR + "/${modelFloatFile}"
+    overwrite false
+}
+
+preBuild.dependsOn downloadModelFloat
